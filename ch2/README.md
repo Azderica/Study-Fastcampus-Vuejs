@@ -27,3 +27,65 @@ vue의 반은성은 data안에 있는 데이터만 반응형이 된다. (즉, �
 
 - `vm.msg` 변경시, update 를 확인할 수 있습니다.
 - `vm.$destroy()` 사용시, destroy를 확인할 수 있습니다.
+
+## 템플릿 문법
+
+- `v-once` : 최초 한번만 적용
+- `v-html` : html 과 같이 태그 반영
+- js의 기본식도 사용가능 (Ex. Math.round())
+  - 다만 표현식만 가능.
+
+```html
+<div id="app">
+  <div>{{msg}}</div>
+  <div v-html="msg"></div>
+  <div>{{ Math.round(1.7) }}</div>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      msg: 'Hello Vue! <br/> Good job~',
+    },
+  })
+</script>
+```
+
+- `v-bind` : `:`로 표현가능
+- `v-on` : `@`로 표현가능
+
+```html
+<style>
+  .normal {
+    color: blue;
+  }
+  .active {
+    color: red;
+  }
+</style>
+
+<div id="app">
+  <!-- 아래와 동일 -->
+  <!-- v-bind:class = :class -->
+  <!-- v-on:method = @method -->
+  <div :class="className" @click="changeClassName">{{msg}}</div>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      msg: 'Hello Vue!',
+      className: 'normal',
+    },
+    methods: {
+      changeClassName() {
+        this.className = 'active'
+      },
+    },
+  })
+</script>
+```
+
+데이터를 통해서 돔을 관리한다
