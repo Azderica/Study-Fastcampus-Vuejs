@@ -89,3 +89,48 @@ vue의 반은성은 data안에 있는 데이터만 반응형이 된다. (즉, �
 ```
 
 데이터를 통해서 돔을 관리한다
+
+## computed
+
+original에서 하지 못하는 것을 computed을 통해서 구현가능하다.
+
+### 간단한 예제 코드.
+
+```html
+<div id="app">
+  <div class="todos">
+    <div v-for="todo in computedTodos" :key="todo.id">
+      <input type="checkbox" v-model="todo.done" />
+      <span> {{ todo.title }}</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      todos: [
+        { title: '아침 먹기' },
+        { title: '점심 먹기' },
+        { title: '저녁 먹기' },
+      ],
+    },
+    computed: {
+      computedTodos() {
+        return this.todos.map((todo, index) => {
+          // return Object.assign({}, todo, {
+          //   id: index + 1,
+          //   done: false,
+          // })
+          return {
+            ...todo,
+            id: index + 1,
+            done: false,
+          }
+        })
+      },
+    },
+  })
+</script>
+```
