@@ -134,3 +134,15 @@ original에서 하지 못하는 것을 computed을 통해서 구현가능하다.
   })
 </script>
 ```
+
+### computed 캐싱
+
+캐싱을 통해서 반복되는 연산을 줄일 수 있습니다.
+
+- [코드 보기](./computed-caching.html)
+
+### computed의 Getter, Setter
+
+getter와 setter를 통해서 computed 값을 접근 가능합니다.
+
+- [코드 보기](./computed-getter-setter.html)
