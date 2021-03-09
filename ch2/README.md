@@ -146,3 +146,44 @@ original에서 하지 못하는 것을 computed을 통해서 구현가능하다.
 getter와 setter를 통해서 computed 값을 접근 가능합니다.
 
 - [코드 보기](./computed-getter-setter.html)
+
+## watch
+
+watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
+
+- [코드 보기](./watch.html)
+
+## class와 스타일 바인딩
+
+- [Doc Link](https://kr.vuejs.org/v2/guide/class-and-style.html)
+
+**데이터 바인딩**은 엘리먼트의 클래스 목록과 인라인 스타일을 조작하기 위해 **일반적으로 사용**됩니다. 이 두 속성은 v-bind를 사용하여 처리할 수 있습니다.
+
+스타일 객체를 여러개 적용할 수 있는데, 뒤에 있는 것일수록 우선순위가 높습니다. (덮어쓴다의 개념)
+
+### v-if
+
+다음과 같이 사용할 수 있습니다.
+
+```html
+<div id="app">
+  <div v-if="colorState === 'red'" class="box box--red"></div>
+  <div v-if="colorState === 'blue'" class="box box--blue"></div>
+  <div
+    v-if="colorState !== 'red' && colorState !== 'blue'"
+    class="box box--gray"
+  ></div>
+</div>
+```
+
+다만 `v-if` 외에도 `v-else-if`, `v-else` 또한 존재합니다. (다만, 형제인 경우에만 가능합니다.)
+
+```html
+<div id="app">
+  <div v-if="colorState === 'red'" class="box box--red"></div>
+  <div v-else-if="colorState === 'blue'" class="box box--blue"></div>
+  <div v-else class="box box--gray"></div>
+</div>
+```
+
+- [코드 보기](./v-if.html)
