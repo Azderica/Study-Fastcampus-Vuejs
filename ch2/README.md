@@ -161,6 +161,10 @@ watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
 
 스타일 객체를 여러개 적용할 수 있는데, 뒤에 있는 것일수록 우선순위가 높습니다. (덮어쓴다의 개념)
 
+## 조건문 렌더링
+
+- [Doc Link](https://kr.vuejs.org/v2/guide/conditional.html)
+
 ### v-if
 
 다음과 같이 사용할 수 있습니다.
@@ -187,3 +191,16 @@ watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
 ```
 
 - [코드 보기](./v-if.html)
+
+### v-show
+
+```html
+<div id="app">
+  <button @click="toggle">Toggle</button>
+  <div class="box" v-show="show"></div>
+</div>
+```
+
+`v-if`와는 다르게 `v-show`는 초기렌더링 비용이 존재합니다. (그려야하지만, css 속성에서 보이지 않는 것일뿐이므로)
+
+`v-if`와 `v-show`의 사용 경우는 다음과 같이 다른데, `v-if`는 일반적으로 매우 선택하는 것이 좋고, `v-show`는 많이 쓰는 경우에 한해서만 사용하는 것이 좋습니다.

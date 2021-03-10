@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <style>
+      .box {
+        width: 200px;
+        height: 150px;
+        background-color: red;
+      }
+    </style>
+    <div id="app">
+      <button @click="toggle">Toggle</button>
+      <div class="box" v-show="show"></div>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          show: true,
+        },
+        methods: {
+          toggle() {
+            this.show = !this.show
+          },
+        },
+      })
+    </script>
+  </body>
+</html>
