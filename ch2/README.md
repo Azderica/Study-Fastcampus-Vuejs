@@ -161,6 +161,8 @@ watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
 
 스타일 객체를 여러개 적용할 수 있는데, 뒤에 있는 것일수록 우선순위가 높습니다. (덮어쓴다의 개념)
 
+<br/>
+
 ## 조건문 렌더링
 
 - [Doc Link](https://kr.vuejs.org/v2/guide/conditional.html)
@@ -205,14 +207,17 @@ watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
 
 `v-if`와 `v-show`의 사용 경우는 다음과 같이 다른데, `v-if`는 일반적으로 매우 선택하는 것이 좋고, `v-show`는 많이 쓰는 경우에 한해서만 사용하는 것이 좋습니다.
 
+<br/>
+
 ## 리스트 렌더링
+
+- [코드 보기](./array.html)
 
 ### 배열(Array)
 
 구별을 위해서 `(value, index)` 순으로 사용한다.
 
 - [Doc](https://kr.vuejs.org/v2/guide/list.html)
-- [코드 보기](./array.html)
 
 더할 때는, push를 사용해야한다.
 
@@ -225,3 +230,16 @@ watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
 - 객체에 속성을 주는 경우에는, 다르게 줘야합니다. (데이터를 임의로 넣으면 반응성이 없습니다.)
   - `Object.assign`을 통해서 넣어줄 수 있습니다.
   - ex) `vm.heropy = Object.assign({}, vm.heropy, {hompage: 'heropy.blog'})`
+
+### Vue.set
+
+위 배열과 객체에 데이터를 넣는 다른 방법은 다음과 같습니다.
+
+- `this.$set(this.heropy, 'hompage', 'heropy.blog')`
+- `Vue.set(위와 동일)`
+
+다음과 같이 할 수 있습니다.
+
+<br/>
+
+## 이벤트 헨들링
