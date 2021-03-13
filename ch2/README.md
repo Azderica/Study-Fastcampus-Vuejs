@@ -211,7 +211,7 @@ watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
 
 ## 리스트 렌더링
 
-- [코드 보기](./array.html)
+- [코드 보기](./list-rendering.html)
 
 ### 배열(Array)
 
@@ -243,3 +243,48 @@ watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
 <br/>
 
 ## 이벤트 헨들링
+
+- [Doc](https://kr.vuejs.org/v2/guide/events.html)
+
+### 메소드 이벤트 핸들러
+
+다음의 코드를 보면 작동합니다.
+
+```js
+clickMethod(todo.title, \$event)
+```
+
+두 args가 넘어가며, 이를 통해서 명령어를 사용할 수 있습니다.
+
+여러 함수를 동시에 발생시킬 수도 있습니다.
+
+- [코드 보기](./event-handling.html)
+
+### 이벤트 수식어
+
+- [Doc](https://kr.vuejs.org/v2/guide/events.html#%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EC%88%98%EC%8B%9D%EC%96%B4)
+
+```html
+<div id="app">
+  <div class="parent" @click="clickHandler">
+    <div class="child" @click.stop="clickHandler"></div>
+  </div>
+</div>
+```
+
+`stop`을 통해서 다른 내용을 클릭했을 때, 중복 결과를 피할 수 있습니다.
+
+마찬가지로 self나 capture 등을 통해서 다양한 것을 구현할 수 있습니다.
+
+- self는 자기자신을 정확하게 클릭해야지 동작합니다.
+
+풀코드는 다음에서 확인할 수 있습니다.
+
+- [코드 보기](./event-modifiers.html)
+
+### 키 수식어
+
+- [Doc](https://kr.vuejs.org/v2/guide/events.html#Key-Codes)
+- [코드 보기](./key-modifiers.html)
+
+chaining을 통해서 두가지 조건이 들어왔을 때 사용할 수도 있습니다.
