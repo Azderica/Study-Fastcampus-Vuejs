@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue test</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 일종의 자식 component -->
+      <my-comp :my-msg="message" @my-event="updateMessage"></my-comp>
+    </div>
+
+    <script>
+      Vue.component('my-comp', {
+        template: '<div @click="updateMsg"> {{ myMsg }} </div>',
+        props: {
+          myMsg: String,
+        },
+        methods: {
+          updateMsg() {
+            // this.myMsg = 'Good' // bad case, execute but error message
+            this.$emit('my-event', 'Good')
+          },
+        },
+      })
+
+      // 일종의 부모 component
+      const vm = new Vue({
+        el: '#app',
+        data() {
+          return {
+            message: 'Hello',
+          }
+        },
+        methods: {
+          updateMessage(value) {
+            this.message = value
+          },
+        },
+      })
+    </script>
+  </body>
+</html>

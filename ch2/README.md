@@ -300,6 +300,8 @@ chaining을 통해서 두가지 조건이 들어왔을 때 사용할 수도 있�
 
 ## 폼 입력
 
+- [코드 보기](./v-model.html)
+
 ### v-model
 
 `v-model`은 다음과 같이 사용할 수 있습니다.
@@ -332,9 +334,9 @@ chaining을 통해서 두가지 조건이 들어왔을 때 사용할 수도 있�
 </script>
 ```
 
-- [코드 보기](./v-model.html)
-
 ### v-model 수식어
+
+- [코드 보기](./v-model-2.html)
 
 #### change
 
@@ -369,3 +371,233 @@ chaining을 통해서 두가지 조건이 들어왔을 때 사용할 수도 있�
 <div>{{ message }}</div>
 <div>{{ typeof message }}</div>
 ```
+
+<br/>
+
+## 컴포넌트
+
+### 컴포넌트란.
+
+- [Doc](https://kr.vuejs.org/v2/guide/components.html)
+
+HTML 엘리먼트를 확장해서 재사용 가능하게하는데 도움을 줍니다. 일종의 UI 그룹이라고 이해하면 된다.
+
+#### 컴포넌트 사용 경우
+
+- 2번 이상 사용한다고 판단되는 경우
+- 로직이 복잡해져서 분류가 필요하다고 판단하는 경우
+
+### 컴포넌트 사용하기 (전역 등록, 지역 등록)
+
+컴포넌트를 사용할 때, 이름은 2개의 단어 이상을 사용하는 것이 좋습니다. (기존의 html과 겹칠 수 있기 때문에)
+
+전역 변수는 다음과 같이 사용할 수 있습니다.
+
+```js
+// 전역 변수
+Vue.component('my-component', {
+  template: '<div class="me">{{message}}</div>',
+  data: function () {
+    return {
+      message: 'Hello Vue!',
+    }
+  },
+})
+```
+
+지역 변수는 다르게 사용할 수 있습니다.
+
+```js
+const myComp = {
+  template: '<div class="me">{{message}}</div>',
+  data: function () {
+    return {
+      message: 'Hello Vue!',
+    }
+  },
+}
+
+const vm1 = new Vue({
+  el: '#app1',
+  components: {
+    'my-component': myComp,
+  },
+})
+const vm2 = new Vue({
+  el: '#app2',
+})
+```
+
+다음 경우에는 지역 변수이기 때문에 vm2는 적용이 안된 것을 확인할 수 있습니다.
+
+특히 신경써줄 부분 중 하나는, `html` 부분은 카멜케이스를 사용하지 않는 것이 좋습니다.
+
+### data 속성이 함수인 이유
+
+- [Doc](https://kr.vuejs.org/v2/guide/components.html#data-%EB%8A%94-%EB%B0%98%EB%93%9C%EC%8B%9C-%ED%95%A8%EC%88%98%EC%97%AC%EC%95%BC%ED%95%A9%EB%8B%88%EB%8B%A4)
+
+이는 잘못된 케이스 입니다.
+
+```js
+Vue.component('my-component', {
+  template: '<span>{{ message }}</span>',
+  data: {
+    message: 'hello',
+  },
+})
+```
+
+```html
+<div id="example-2">
+  <simple-counter></simple-counter>
+  <simple-counter></simple-counter>
+  <simple-counter></simple-counter>
+</div>
+```
+
+```js
+var data = { counter: 0 }
+
+Vue.component('simple-counter', {
+  template: '<button v-on:click="counter += 1">{{ counter }}</button>',
+  // 데이터는 기술적으로 함수이므로 Vue는 따지지 않지만
+  // 각 컴포넌트 인스턴스에 대해 같은 객체 참조를 반환합니다.
+  data: function () {
+    return data
+  },
+})
+
+new Vue({
+  el: '#example-2',
+})
+```
+
+위 경우숫자를 임의로 올리게 되면 모든 값이 오르게 됩니다.
+
+객체를 보는 것이기 때문에, data를 공유하면 안됩니다. 따라서 인스턴스 변수를 사용해야하고, 함수를 사용해야합니다.
+
+따라서 다음과 같이 함수로 만들어야 합니다.
+
+```js
+data: function () {
+  return {
+    counter: 0
+  }
+}
+```
+
+### 데이터 전달(props)
+
+부모에서 자식으로 데이터를 전달합니다.
+
+- [코드 보기](./component-props.html)
+
+html은 케밥 케이스(xxx-yyy), js는 카멜 케이스(xxxYyy)와 같이 작성해야 합니다.
+
+### 사용자 지정 이벤트($emit)
+
+위의 코드에서 다음과 같이 분리합니다.
+
+- 자식 부분
+
+```html
+<!-- 일종의 자식 component -->
+<my-comp :my-msg="message"></my-comp>
+```
+
+```js
+Vue.component('my-comp', {
+  template: '<div> {{ myMsg }} </div>',
+  props: {
+    myMsg: String,
+  },
+})
+```
+
+- 부모 부분
+
+```js
+// 일종의 부모 component
+const vm = new Vue({
+  el: '#app',
+  data() {
+    return {
+      message: 'Hello',
+    }
+  },
+})
+```
+
+- [Doc : 컴포넌트 작성](https://kr.vuejs.org/v2/guide/components.html#%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%9E%91%EC%84%B1)
+
+다만 데이터를 바꿀 때는 자식에서 바꾸는 것은 좋지 않고, 부모에게 이벤트를 실행하는 방식으로 진행해야합니다.
+
+따라서 다음과 같이 코드를 구성해야합니다.
+
+- [코드 보기](./component-emit.html)
+
+### slot
+
+slot을 통해서 렌더링 시, 렌더링 안된 부분을 해결할 수 있습니다.
+
+```html
+<slot></slot>
+
+<!-- slot 안에 데이터 없는 경우, 대체 콘텐츠가 나옵니다. -->
+<slot>대체 콘텐츠</slot>
+```
+
+slot을 통해서 일부만 출력할 수도 있습니다.
+
+```html
+<my-comp>
+  <div slot="slot1">Hello Slot!</div>
+  <input type="text" />
+</my-comp>
+```
+
+```js
+Vue.component('my-comp', {
+  template: '<div><slot name="slot1"></slot></div>',
+})
+```
+
+순서도 바뀔 수 있습니다.
+
+```html
+<my-comp>
+  <div slot="slot1">Hello Slot!</div>
+  <input type="text" />
+</my-comp>
+```
+
+```js
+Vue.component('my-comp', {
+  template: '<div> <slot></slot> <slot name="slot1"></slot></div>',
+})
+```
+
+해당 경우는, input(slot)이 text(slot1)보다 앞에 나오게 됩니다.
+
+다음과 같이 template을 통해서도 출력가능합니다.
+
+```html
+<my-comp>
+  <template slot-scope="myProps"> {{ myProps.mySlotData}} </template>
+</my-comp>
+```
+
+```js
+Vue.component('my-comp', {
+  template: '<div> <slot my-slot-data="Hello Slot!"></slot></div>',
+})
+```
+
+이 방법을 통해서 자식 데이터의 일부를 사용할 수 있습니다.
+
+- [코드 보기](./component-slot.html)
+
+항상 기억해야하는 것.
+
+- v-bind : `:`로 요약가능
+- v-on : `@`로 요약가능
