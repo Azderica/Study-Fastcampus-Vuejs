@@ -28,6 +28,8 @@ vue의 반은성은 data안에 있는 데이터만 반응형이 된다. (즉, �
 - `vm.msg` 변경시, update 를 확인할 수 있습니다.
 - `vm.$destroy()` 사용시, destroy를 확인할 수 있습니다.
 
+<br/>
+
 ## 템플릿 문법
 
 - `v-once` : 최초 한번만 적용
@@ -147,11 +149,15 @@ getter와 setter를 통해서 computed 값을 접근 가능합니다.
 
 - [코드 보기](./computed-getter-setter.html)
 
+<br/>
+
 ## watch
 
 watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
 
 - [코드 보기](./watch.html)
+
+<br/>
 
 ## class와 스타일 바인딩
 
@@ -161,6 +167,7 @@ watch를 통해서 특정 데이터의 변화를 감지할 수 있습니다.
 
 스타일 객체를 여러개 적용할 수 있는데, 뒤에 있는 것일수록 우선순위가 높습니다. (덮어쓴다의 개념)
 
+<br/>
 <br/>
 
 ## 조건문 렌더링
@@ -288,3 +295,77 @@ clickMethod(todo.title, \$event)
 - [코드 보기](./key-modifiers.html)
 
 chaining을 통해서 두가지 조건이 들어왔을 때 사용할 수도 있습니다.
+
+<br/>
+
+## 폼 입력
+
+### v-model
+
+`v-model`은 다음과 같이 사용할 수 있습니다.
+
+```html
+<input type="text" v-model="message" />
+<div>{{ message }}</div>
+```
+
+그러나 `v-model`은 한글 입력의 경우, 입력이 다되어야지 반영되는 문제가 있습니다. 이를 해결하기 위해서는 다음과 같이 사용해야합니다.
+
+```html
+<div id="app">
+  <input type="text" @input="bindMessage" />
+  <div>{{ message }}</div>
+</div>
+
+<script>
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      message: 'Hello~',
+    },
+    methods: {
+      bindMessage(event) {
+        this.message = event.target.value
+      },
+    },
+  })
+</script>
+```
+
+- [코드 보기](./v-model.html)
+
+### v-model 수식어
+
+#### change
+
+`@change`를 사용하면, 특정 키워드로 실행할 수 있습니다.
+
+다음과 같이 사용할 수 있습니다.
+
+```html
+<input type="text" @change="message = $event.target.value" :value="message" />
+```
+
+다만 이 방법말고, `lazy`를 사용하면 더 좋습니다.
+
+```html
+<input type="text" v-model.lazy="message" />
+```
+
+#### trim
+
+`trim` 수식어도 있습니다. 이는 맨앞과 맨뒤의 공백을 지워줍니다.
+
+```html
+<input type="text" v-model.trim="message" />
+```
+
+#### number
+
+최대한 숫자로 값을 바꿔줍니다. js의 `parseFloat`와 비슷합니다.
+
+```html
+<input type="text" v-model.number="message" />
+<div>{{ message }}</div>
+<div>{{ typeof message }}</div>
+```
