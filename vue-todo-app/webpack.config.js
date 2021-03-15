@@ -1,4 +1,5 @@
 const path = require('path')
+const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
   // 진입점
@@ -7,9 +8,26 @@ module.exports = {
   },
   // 결과물에 대한 설정
   output: {
-    filename: 'app.js',
+    filename: '[name].js', // app.js
     path: path.join(__dirname, 'dist'),
   },
-  module: '',
-  plugins: '',
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ['vue-style-loader', 'css-loader'],
+        // 동작 순대로 진행하기 때문에 순서가 중요.
+      },
+    ],
+  },
+  plugins: [new VueLoaderPlugin()],
 }
