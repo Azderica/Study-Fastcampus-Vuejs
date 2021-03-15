@@ -72,3 +72,12 @@ module은 test에 어떤게 들어오면 어떻게 처리해주세요로 이해�
 ### Vue-Loader
 
 - [Doc](https://vue-loader.vuejs.org/guide/)
+
+### Babel
+
+ES6 이상의 코드를 ES5 이하의 버전으로 변환하기 위해서 사용
+
+- `@babel/core` : 바벨이 실제 동작하는 보듈
+- `@babel/preset-env` : 바벨의 지원 스펙을 지정합니다.
+- `babel-loader` : 웹팩 지원을 위해 사용합니다.
+- `@babel/polyfill` : 구형 및 일부 브라우저에서 지원하지 않는 기능을 지원합니다.

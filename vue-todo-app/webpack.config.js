@@ -1,10 +1,11 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
+require('@babel/polyfill')
 
 module.exports = {
   // 진입점
   entry: {
-    app: path.join(__dirname, 'main.js'),
+    app: ['@babel/polyfill', path.join(__dirname, 'main.js')],
   },
   // 결과물에 대한 설정
   output: {
