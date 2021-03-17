@@ -1,6 +1,8 @@
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 require('@babel/polyfill')
 
 module.exports = {
@@ -31,10 +33,18 @@ module.exports = {
       },
     ],
   },
+  // 번들링 후 결과물의 처리 방식 등 다양한 플러그인들을 설정
   plugins: [
-    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'index.html'),
     }),
+    new VueLoaderPlugin(),
+    // assets 디렉터리의 내용을 `dist` 디렉터리에 복사합니다
+    new CopyPlugin([
+      {
+        from: 'assets/',
+        to: '',
+      },
+    ]),
   ],
 }
