@@ -81,3 +81,20 @@ ES6 이상의 코드를 ES5 이하의 버전으로 변환하기 위해서 사용
 - `@babel/preset-env` : 바벨의 지원 스펙을 지정합니다.
 - `babel-loader` : 웹팩 지원을 위해 사용합니다.
 - `@babel/polyfill` : 구형 및 일부 브라우저에서 지원하지 않는 기능을 지원합니다.
+
+### CSS 관련.
+
+![image](https://user-images.githubusercontent.com/42582516/111481769-a17ac380-8776-11eb-88bf-b3295b4c8247.png)
+
+전처리 -> CSS -> 후처리
+
+전처리 예시
+
+- LESS
+- SASS(SCSS)
+- Stglus
+
+후처리 예시
+
+- PostCSS
+- Auto prefixer

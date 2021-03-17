@@ -4,7 +4,7 @@
   "description": "Vue Todo list app",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Azderica/Study-Fastcampus-Vuejs.git"
   },
   "main": "index.js",
   "browserslist": [
