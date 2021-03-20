@@ -49,3 +49,11 @@ Client <-> Server <-> DB
 ### crypto-random-string
 
 - [crypto-random-string](https://github.com/sindresorhus/crypto-random-string)
+
+## Moment.js / day.js
+
+- [Moment js Doc](https://momentjs.com/)
+
+- 사용시 용량이 크기 때문에 `day.js`를 사용할 수도 있음.
+  - [day.js](https://github.com/iamkun/dayjs)
+  - `npm i dayjs`
