@@ -32,3 +32,20 @@ Lowdb에서 기본적으로 제공하는 부분은 다음과 같습니다.
 나머지 기능 들은 Lodash 의 기능입니다. (다만, Lowdb의 기능들도 모두 Lodash 에서 정의되어 있습니다.)
 
 - Ex) `defaults`
+
+## CRUD
+
+### CRUD란.
+
+- C : Create
+- R : Read
+- U : Update
+- D : Delete
+
+### 서비스 구성
+
+Client <-> Server <-> DB
+
+### crypto-random-string
+
+- [crypto-random-string](https://github.com/sindresorhus/crypto-random-string)
