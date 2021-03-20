@@ -12,8 +12,23 @@
 
 - [MDN DOC](https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage)
 
-### Low db
+### Lodash / Low db 설치
 
 `npm install lodash lowdb`
 
 lodash 기반이므로 lodash를 설치해야한다.
+
+- [git repository](https://github.com/typicode/lowdb)
+- [Lodash](https://lodash.com/)
+
+### Lodash 와 Low db 차이
+
+Lowdb에서 기본적으로 제공하는 부분은 다음과 같습니다.
+
+- `db.getState()`
+- `db.setState(newState)`
+- `db.write()`
+
+나머지 기능 들은 Lodash 의 기능입니다. (다만, Lowdb의 기능들도 모두 Lodash 에서 정의되어 있습니다.)
+
+- Ex) `defaults`
