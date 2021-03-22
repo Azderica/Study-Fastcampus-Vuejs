@@ -110,3 +110,82 @@ rl.question('원하는 도형을 작성하세요 : ', input => {
   rl.close;
 })
 ```
+
+### Module 장점
+
+- 코드의 재사용성 증가
+- 코드의 관리가 편해짐
+- 코드를 모듈화하는 기준이 명확해짐
+
+<br/>
+
+## Bundle
+
+![image](https://user-images.githubusercontent.com/42582516/112001504-5f7cc380-8b62-11eb-8e81-05c6406f0fcc.png)
+
+### Bundle이 중요한 이유
+
+- 모든 모듈을 로드하기 위해 검색되는 시간이 단축됩니다.
+  - 중복되는 모듈 포함 함수들을 줄 일 수 있습니다.
+- 사용하지 않는 코드를 제거해줍니다.
+- 파일의 크기를 줄여줍니다.
+
+<br/>
+
+## Webpack
+
+### Webpack의 이해
+
+#### Webpack 기본구조
+
+해당 내용은 위의 이미지를 참고하면 됩니다.
+
+Webpack이 바라보는 Module은 다음과 같습니다.
+
+- js, sass, hbs, jpg, png, ...
+
+이러한 파일들을 js, css, jpg, png로 바꿔 주는 과정을 bundle이라고 합니다.
+
+즉, 다음과 같이 파일을 bundle.js로 표현합니다.
+
+![image](https://user-images.githubusercontent.com/42582516/112002511-4f191880-8b63-11eb-899c-1ea9ff9508dd.png)
+
+**Entry**
+
+- 모듈의 의존 관계를 이해하기 위한 시작점을 설정합니다.
+- 의존성 그래프를 구성해줍니다.
+
+**Output**
+
+- Webpack이 생성하는 번들 파일에 대한 정보를 설정합니다.
+
+#### Webpack 사용하기
+
+`npm i -D webpack webpack-cli`
+
+`npx webpack --target=node`
+
+이를 다음과 같이 사용할 수 있습니다.
+
+`webpack.config.js`를 다음과 같이 설치 후, `npx webpack` 을 실행하면 해당 파일이 `dist/bundle.js`로 저장되는 것을 확인할 수 있습니다.
+
+```js
+const path = require('path')
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  target: 'node',
+}
+```
+
+#### Webpack 설정
+
+#### Webpack 활용
+
+### Webpack 구성 요소
+
+### Webpack 관련 용어
