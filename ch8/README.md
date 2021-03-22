@@ -182,6 +182,21 @@ module.exports = {
 }
 ```
 
+**Mode**
+
+- Package.json --save-dev, --save
+- 개발 환경과 프로덕션 환경
+- Mode & Webpack-merge
+
+Package.json 은 2개로 나눠짐
+
+- 어플리케이션 내부에서 직접 포함되는 모듈 (--save), `dependencies`
+- 개발 과정에 필요한 모듈 (--save-dev), `devDependencies`
+
+**Loader**
+
+다양한 모듈들을 입력받아 처리하는 역할
+
 #### Webpack 설정
 
 #### Webpack 활용
