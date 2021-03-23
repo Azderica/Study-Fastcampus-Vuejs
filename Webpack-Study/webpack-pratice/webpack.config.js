@@ -26,11 +26,16 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.hbs$/,
+        use: ['handlebars-loader'],
+      },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './template.html',
+      title: 'webpack',
+      template: './template.hbs',
     }),
   ],
   mode: 'none',

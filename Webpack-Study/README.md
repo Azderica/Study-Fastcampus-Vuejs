@@ -161,9 +161,8 @@ Webpack이 바라보는 Module은 다음과 같습니다.
 
 #### Webpack 사용하기
 
-`npm i -D webpack webpack-cli`
-
-`npx webpack --target=node`
+- `npm i -D webpack webpack-cli`
+- `npx webpack --target=node`
 
 이를 다음과 같이 사용할 수 있습니다.
 
@@ -210,6 +209,15 @@ module.exports = {
 - `npm i html-webpack-plugin -D`
 
 #### Webpack 설정
+
+- Handlebars & Webpack
+
+Handlebars는 template engine입니다.
+
+Model + template == (Handlebars) ==> View
+
+- `npm i handlebars -D`
+- `npm i handlebars-loader -D`
 
 #### Webpack 활용
 
