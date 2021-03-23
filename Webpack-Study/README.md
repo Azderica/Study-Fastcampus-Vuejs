@@ -210,7 +210,7 @@ module.exports = {
 
 #### Webpack 설정
 
-- Handlebars & Webpack
+**Handlebars & Webpack**
 
 Handlebars는 template engine입니다.
 
@@ -218,6 +218,22 @@ Model + template == (Handlebars) ==> View
 
 - `npm i handlebars -D`
 - `npm i handlebars-loader -D`
+
+**Caching & Webpack**
+
+캐싱은 여러 캐시가 있지만 여기서는 로컬 캐시만 사용 예정 (브라우저 캐싱)
+
+번들파일로 만들 때, 효과적으로 캐싱을 사용해서 만들 수 있다.
+
+수정사항이 바뀔 때, caching file이 변함으로서 수정할 수 있다. (bundle은 공통이지만.)
+
+캐시파일이 폴더에 쌓이는 것을 막기 위해서 다음을 사용합니다.
+
+- `npm i clean-webpack-plugin -D`
+
+다음과 같이 스타일 태그를 설정합니다.
+
+- `npm i mini-css-extract-plugin -D`
 
 #### Webpack 활용
 
