@@ -199,6 +199,16 @@ Package.json 은 2개로 나눠짐
 
 > [CSS-Loader](https://github.com/webpack-contrib/css-loader)
 
+**Plugin**
+
+```js
+module.exports = {
+  plugins: [new Plugin({ ...option }), ...]
+}
+```
+
+- `npm i html-webpack-plugin -D`
+
 #### Webpack 설정
 
 #### Webpack 활용
