@@ -210,6 +210,8 @@ module.exports = {
 
 #### Webpack 설정
 
+- [HTML webpack plugin](https://github.com/jantimon/html-webpack-plugin)
+
 **Handlebars & Webpack**
 
 Handlebars는 template engine입니다.
@@ -249,6 +251,27 @@ Runtime Chunk 파일과 Vender Chunk 파일로 구성.
 설치 파일.
 
 - `npm i jquery -S`
+
+**Minification & Mangling**
+
+- Minification : 코드 경량화
+- Mangling : 난독화 과정 (코드 용량 감소 및 외부에서 보기힘들게 처리)
+
+html 최적화는 `html-webpack-plugin`의 minify를 이용하면 되고, css는 cssnano를 사용하면 된다.
+
+> [CSSNano Doc](https://cssnano.co/)
+
+- [optimize-css-assets-webpack-plugin](https://github.com/NMFR/optimize-css-assets-webpack-plugin)
+
+다음과 같이 설치가능합니다.
+
+- `npm i optimize-css-assets-webpack-plugin -D`
+
+js도 최적화가 가능합니다. 크게 3가지 컴프레셔가 있습니다. (그중에서 webpack이 기본적으로 사용하는 terser를 여기서 설치합니다. / 그외에는 uglify, babel-minify)
+
+- `npm i terser-webpack-plugin -D`
+
+cache true로 하면 에러가 발생해서 스탑.
 
 #### Webpack 활용
 
