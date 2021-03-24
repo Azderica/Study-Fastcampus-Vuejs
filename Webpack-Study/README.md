@@ -235,6 +235,21 @@ Model + template == (Handlebars) ==> View
 
 - `npm i mini-css-extract-plugin -D`
 
+**Chunk & chunkhash**
+
+Chunk : 몇가지 기준에서 여러 파일로 나누는 것
+
+- Ex. Bundle.js -> Chunk A, Chunk B, Chunk C
+
+Runtime Chunk 파일과 Vender Chunk 파일로 구성.
+
+- Runtime은 고정이고, 일부 코드만 바뀌게 되므로 최적화 가능
+- Vender Chunk는 외부 모듈, jQuery 등이며 마찬가지로 이 또한 외부에서 가져오게 되면 최적화가 된다.
+
+설치 파일.
+
+- `npm i jquery -S`
+
 #### Webpack 활용
 
 ### Webpack 구성 요소
