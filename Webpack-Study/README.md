@@ -275,7 +275,10 @@ cache true로 하면 에러가 발생해서 이를 추가하지는 않았음
 
 ##### Development Mode & Production Mode
 
+다음 파일들을 설치
+
 - npm i webpack-merge -D
+- npm i -D webpack-dev-server
 
 #### Webpack 활용
 
