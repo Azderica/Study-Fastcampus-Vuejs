@@ -271,7 +271,11 @@ js도 최적화가 가능합니다. 크게 3가지 컴프레셔가 있습니다.
 
 - `npm i terser-webpack-plugin -D`
 
-cache true로 하면 에러가 발생해서 스탑.
+cache true로 하면 에러가 발생해서 이를 추가하지는 않았음
+
+##### Development Mode & Production Mode
+
+- npm i webpack-merge -D
 
 #### Webpack 활용
 
