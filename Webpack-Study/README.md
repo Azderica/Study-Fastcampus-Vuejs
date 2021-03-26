@@ -282,6 +282,49 @@ cache true로 하면 에러가 발생해서 이를 추가하지는 않았음
 
 #### Webpack 활용
 
-### Webpack 구성 요소
+##### File Loader
 
-### Webpack 관련 용어
+File을 Copy해서 읽어들어옴
+
+- `npm i file-loader -D`
+
+##### URL Loader
+
+- `npm i url-loader -D`
+
+##### SASS Loader
+
+CSS 의 확장판
+
+- [공식 DOC](https://sass-lang.com/)
+
+파일 설치 방법.
+
+- `npm i sass-loader -D`
+
+##### POSTCSS
+
+- [공식 DOC](https://postcss.org/)
+
+##### BROWSERLIST
+
+- [git repository](https://github.com/browserslist/browserslist)
+
+##### stylelint
+
+- [git repository](https://github.com/stylelint/stylelint)
+- [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard)
+- [stylelint-config-recommended](https://github.com/stylelint/stylelint-config-recommended)
+
+회사 rule 대로 하면 된다. (recommended에 여러 회사 있다.)
+
+##### BABEL
+
+다음 중 하나로 설정 가능.
+
+1. bebel.rc
+2. babel.config.js
+
+- [Babel Doc](https://babeljs.io/)
+
+##### WEBPACK 마무리.

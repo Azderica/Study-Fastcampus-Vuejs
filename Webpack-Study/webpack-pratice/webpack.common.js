@@ -32,11 +32,44 @@ module.exports = {
               modules: true,
             },
           },
+          'sass-loader',
         ],
+      },
+      {
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
       {
         test: /\.hbs$/,
         use: ['handlebars-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name() {
+                if (!isProduction) {
+                  return '[path][name].[ext]'
+                }
+                return `[contenthash].[ext]`
+              },
+              publicPath: 'assets/',
+              outputPath: 'assets/',
+            },
+          },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
       },
     ],
   },
